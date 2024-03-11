@@ -19,17 +19,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link {% block homeactive %}{% endblock %}" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link {% block aboutactive %}{% endblock %} " href="/about">About</a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" aria-disabled="true" href="/contact">Contact Us</a>
+                <a class="nav-link {% block contactactive %}{% endblock %}" aria-disabled="true" href="/contact">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a href="/blog" class="nav-link">Blog</a>
+                <a href="/blog"  class ="nav-link {% block blogactive %}{% endblock %}">Blog</a>
               </li>
             
             </ul>
