@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Contact
 from django.contrib import messages
+from . models import Contact
 # Create your views here.
 
 def home(request):
-    return render(request, 'home/home.html')
+    allposts = Contact.objects.all()
+    return render(request, 'home/home.html',{"allposts": allposts})
 
 def contact(request):
     messages.success(request, "Welcome to cantact us..happy to hear from you.")
