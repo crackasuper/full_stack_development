@@ -8,3 +8,36 @@ Contact
 <h1>Hello contact us</h1>
     
 {% endblock %}
+
+{% block body %}
+<div class="container">
+  {% for message in messages %}
+     
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+  {% endfor %}
+    <form accept="/contact" method="post">
+      {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name"  id="text">
+         </div>
+         <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="text" name="phone" class="form-control" id="phone">
+          </div>
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="content" class="form-label">Describe your issues</label>
+            <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea><br><br>
+            <button type="submit" class="text-center btn btn-primary">Submit</button>
+        </div>
+        
+      </form>
+  </div>
+    
+{% endblock %}
