@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+{% block title %}
+
+Blog Home
+    
+{% endblock %}
+{% block blogactive %}
+active
+{% endblock %}
+{% block data %}
+
+    
+{% endblock %}
+{% block body %}
+
+<div class="container">
+    <h2>Results are : </h2>
+  
+{% for post in allposts %}
+  
+
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36bOfuc91DKK7hwskPEh31O7GuoBymXAQPQ4XTr5R6sEKvWLYaVL1gU5soQ4B8Qgj964&usqp=CAU" class="card-img-top" style="border: none;" alt="...">
+       
+        <div class="card-body">
+          <h5 class="card-title">{{post.author}}</h5>
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content}}</p>
+          <a href="{{post.slug}}" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+</div>
+
+ {% endfor %}
+ 
+       
+  
+
+
+    
+{% endblock %}

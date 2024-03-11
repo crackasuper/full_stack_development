@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Contact
 from django.contrib import messages
 from . models import Contact
+from blog.models import blog
 # Create your views here.
 
 def home(request):
@@ -30,3 +31,8 @@ def about(request):
     return render(request, 'home/about.html')
 
 
+def search(request):
+    query = request.GET['query']
+    allposts = blog.objects.filter(title__icontains=query)
+    context = {'allposts': allposts}
+    return render(request, 'home/search.html', context)
