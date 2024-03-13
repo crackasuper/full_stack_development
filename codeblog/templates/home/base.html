@@ -31,12 +31,25 @@
               <li class="nav-item">
                 <a href="/blog"  class ="nav-link {% block blogactive %}{% endblock %}">Blog</a>
               </li>
+
             
             </ul>
             <form action="/search" method="get" class="d-flex" role="search">
               <input name="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <div class="dropdown text-right">
+              <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Visitor
+              </a>
+            
+              <ul class="dropdown-menu" >
+                <li><a class="dropdown-item" href="/login">Sign in</a></li>
+                <li><a class="dropdown-item" href="/signup">Sign up</a></li>
+                <li><a class="dropdown-item" href="/login">Logout</a></li>
+                
+              </ul>
+            </div>
           </div>
         </div>
       </nav>

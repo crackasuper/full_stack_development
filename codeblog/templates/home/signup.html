@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+{% block contactactive %} active {% endblock %}
+{% block title %}
+
+signup
+    
+{% endblock %}
+{% block data %}
+    
+{% endblock %}
+{% block body %}
+
+   <div class="container">
+    {% for message in messages %}
+     
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+  {% endfor %}
+  <h1>Signup</h1>
+    <form action="/signup" method="POST">
+        {% csrf_token%}
+        <div class="mb-3">
+            {{form.as_p}}
+        
+          </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/login">Already have Account? Login</a>
+      </form>
+        
+   </div>
+{% endblock %}

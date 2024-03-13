@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from .models import Contact
 from django.contrib import messages
 from . models import Contact
 from blog.models import blog
+from . models import register
+
+from .forms import LoginForm, SignupForm
 # Create your views here.
 
 def home(request):
@@ -36,3 +40,31 @@ def search(request):
     allposts = blog.objects.filter(title__icontains=query)
     context = {'allposts': allposts}
     return render(request, 'home/search.html', context)
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username = username, password = password)
+            if user:
+                login(request)
+                return redirect('')
+    else:
+        form = LoginForm()
+    return render(request, 'home/login.html', {'form' : form})
+
+def log_out(request):
+    logout(request)
+    return render('login')
+
+def signup(request):
+    if request.method == 'POST':
+        form  = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignupForm()
+    return render(request, 'home/signup.html', {'form': form})
