@@ -50,7 +50,7 @@ def login(request):
             user = authenticate(request, username = username, password = password)
             if user:
                 login(request)
-                return redirect('')
+                return redirect('home')
     else:
         form = LoginForm()
     return render(request, 'home/login.html', {'form' : form})
