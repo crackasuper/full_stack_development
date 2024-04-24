@@ -5,6 +5,7 @@ import os
 
 # Create your models here.
 from django.utils.deconstruct import deconstructible
+@deconstructible
 
 class GenerateProfileImagePath(object):
     def __init__(self):
@@ -19,6 +20,10 @@ user_profile_image_path = GenerateProfileImagePath()
         
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.FieldFile(upload_to= user_profile_image_path, blank = True, null = True)
-    
+    image = models.ImageField(upload_to= user_profile_image_path, blank = True, null = True)
+
+
+    def __str__(self):
+        return f'{self.user.username}\'s profile'
+
     
